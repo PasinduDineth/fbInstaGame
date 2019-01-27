@@ -1,0 +1,110 @@
+html { 
+    background: url(../img/bg.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%
+  }
+
+h1 {
+    color: #3b5998;
+    font-family: 'Bangers', cursive;
+}
+
+h2 {
+    color: #afbdd4;
+    font-family: 'Bangers', cursive;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex:1;
+    flex-direction: column
+}
+.loader {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid #9C0831; /* Blue */
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  
+.button {
+    background-color: #C7002A;
+    color: white;
+    font-size: 40px;
+    border-radius: 5px;
+    font-family: 'Bangers', cursive;
+    border: 10px;
+    padding:7%;
+    text-shadow: 2px 2px gray;
+    box-shadow: 7px 5px gray;
+}
+
+.panel p {
+    color: #6d84b4;
+    font-family: 'Tahoma';
+}
+
+.img-title {
+    width:90%;
+    align-self: center;
+    max-width: 750px;
+}
+
+#error-messages {
+    color: #f00;
+}
+
+#scene {
+    width: 90%;
+    height: 90%;
+    overflow-x: auto;
+}
+table.gamegrid {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    table-layout:fixed;
+}
+
+/* table.gamegrid tr {
+    width: 600px;
+    height: 200px;
+} */
+
+table.gamegrid tr td {
+    width:100px;
+    height:100px;
+    margin: 5px;
+    padding: 3px;
+}
+
+table.gamegrid tr td.blue {
+    background-color: lightblue;
+}
+
+table.gamegrid tr td.grey {
+    background-color: lightgrey;
+}
+
+table.gamegrid tr td img.sprite {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    vertical-align: middle;
+}
+
+
+
+

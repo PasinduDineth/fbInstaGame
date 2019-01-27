@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet"> 
+</head>
+<body style="height: 100%">
+  
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.0.js"></script>
+  <script type="text/javascript">
+
+    window.onload = function() {
+      
+      FBInstant.initializeAsync().then(function() {
+        
+        var playerID = FBInstant.player.getID();
+        var playerImage = new Image();
+          playerImage.crossOrigin = 'anonymous';
+          // This function should be called after FBInstant.startGameAsync()
+          // resolves.
+          playerImage.src = FBInstant.player.getPhoto();
+          playerImage.height = 150;
+          playerImage.width = 150;
+          playerImage.border = 10
+          playerImage.style.borderColor= 'white';
+          document.getElementById('image').innerHTML = playerImage.outerHTML;
+        })
+
+        // // Finished loading. Start the game
+        FBInstant.startGameAsync().then(function() {
+          startGame();          
+        });
+    };
+
+    // function selectContext() {
+    //   // FBInstant.context.chooseAsync()
+    //   //   .then(function() {
+    //   //       startGame();          
+    //   //   })
+    //   FBInstant.startGameAsync().then(function() {
+    //       startGame();          
+    //     });
+    // }
+
+    function startGame() {
+      document.getElementById('prediction').innerHTML = '<div class="loader"></div> ';
+      setTimeout(function(){ 
+        var predictionImage = new Image();
+      predictionImage.crossOrigin = 'anonymous';
+          // This function should be called after FBInstant.startGameAsync()
+          // resolves.
+          predictionImage.src = './img/prediction1.jpg'
+          predictionImage.height = 150;
+          predictionImage.width = 150;
+          predictionImage.border = 10
+          predictionImage.style.borderColor= 'white';
+          document.getElementById('prediction').innerHTML = predictionImage.outerHTML;
+       }, 3000);
+     
+    }
+  
+</script>
+
+<div class="center">
+  <div id="image" style="margin:2%">
+  </div>
+  <div>
+    <input type="button" class="button" value="Preadict my Future" onclick="startGame();" />
+  </div>
+  <div id="prediction" style="margin:2%">
+  </div>
+</div>
+</body>
+</html>
