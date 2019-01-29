@@ -38,7 +38,7 @@
         FBInstant.startGameAsync().then(function() {
           startGame();          
         });
-    };
+        };
 
     // function selectContext() {
     //   // FBInstant.context.chooseAsync()
@@ -50,7 +50,7 @@
     //     });
     // }
 
-    function startGame() {
+function startGame() {
       document.getElementById('prediction').innerHTML = '<div class="loader"></div> ';
       setTimeout(function(){ 
         var predictionImage = new Image();
@@ -64,9 +64,13 @@
           predictionImage.style.borderColor= 'white';
           document.getElementById('prediction').innerHTML = predictionImage.outerHTML;
        }, 3000);
-     
+      var element = document.getElementById("mymodal");
+      element.classList.add("is-active");
     }
-  
+function closeModal(){
+      var element = document.getElementById("mymodal");
+      element.classList.remove("is-active");
+    }
 </script>
 
 <div class="center">
@@ -76,6 +80,15 @@
       <button class="button is-link is-large" onclick="startGame();">Predict My Future</button>
   </div>
   <div id="prediction" style="margin:2%">
+  </div>
+  <div class="modal" id="mymodal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <p class="image is-4by3">
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+      </p>
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="closeModal();"></button>
   </div>
 </div>
 </body>
