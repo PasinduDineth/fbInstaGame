@@ -15,6 +15,9 @@
 <body style="height: 100%">
   
   <script src="https://connect.facebook.net/en_US/fbinstant.6.0.js"></script>
+  <script src="js/html2canvas.js"></script>
+  <script src="js/reimg.js"></script>
+  <script src="js/html2canvas.min.js"></script>
   <script type="text/javascript">
 
     window.onload = function() {
@@ -66,6 +69,17 @@ function startGame() {
        }, 3000);
       var element = document.getElementById("mymodal");
       element.classList.add("is-active");
+
+   
+
+html2canvas(document.querySelector("#pasi")).then(canvas => {
+    // document.body.appendChild(canvas)
+    var png = ReImg.fromCanvas(canvas).toPng();
+    var x = 
+    document.getElementById('result').innerHTML = png.outerHTML;
+});
+
+
     }
 function closeModal(){
       var element = document.getElementById("mymodal");
@@ -73,19 +87,24 @@ function closeModal(){
     }
 </script>
 
+
 <div class="center">
   <div id="image" style="margin:2%">
   </div>
+
   <div>
       <button class="button is-link is-large" onclick="startGame();">Predict My Future</button>
   </div>
+    <div id="pasi">
+      <h1>asasas</h1>
+    </div>
+
   <div id="prediction" style="margin:2%">
   </div>
   <div class="modal" id="mymodal">
     <div class="modal-background"></div>
     <div class="modal-content">
-      <p class="image is-4by3">
-        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="">
+      <p class="image is-4by3" id="result">
       </p>
     </div>
     <button class="modal-close is-large" aria-label="close" onclick="closeModal();"></button>
