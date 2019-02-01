@@ -91,6 +91,9 @@ table.gamegrid tr td img.sprite {
     vertical-align: middle;
 }
 
-
-
-
+#element-toggle {
+    display: none;
+  }
+#element-toggle:checked ~ #myModal {
+    display: flex;
+  }

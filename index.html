@@ -70,13 +70,20 @@
 </script>
 
 <div class="center">
-  <div id="image" style="margin:2%">
-  </div>
-  <div>
-      <button class="button is-link is-large" onclick="startGame();">Predict My Future</button>
+ <label class="button is-link is-large" for="element-toggle">Launch Modal</label>
+<input id="element-toggle" type="checkbox" />
+
+<!-- Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div id="image" style="margin:2%">
   </div>
   <div id="prediction" style="margin:2%">
   </div>
+  </div>
+  <label class="modal-close is-large" for="element-toggle"></label>
+</div>
 </div>
 </body>
 </html>
