@@ -24,7 +24,34 @@ h2 {
     flex:1;
     flex-direction: column
 }
-
+.GridMain{
+    display: flex;
+    flex-direction: column;
+}
+.imageGrid{
+    display: flex;
+    flex-direction: row;
+    justify-content:center
+}
+.header{
+    text-align: center;
+    color: #272727;
+    margin-top: 4%;
+    font-size: 40px
+}
+.share{
+    margin: 6%
+}
+img {
+    max-width: 100%;
+  }
+  
+  img.align-self {
+    align-self: center;
+  }
+.fb{
+    margin: 3%
+}
 .button {
     background-color: #C7002A;
     color: white;

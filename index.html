@@ -9,36 +9,27 @@
 
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/bulma.min.css" rel="stylesheet" type="text/css" />
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet"> 
 </head>
 <body style="height: 100%">
   
   <script src="https://connect.facebook.net/en_US/fbinstant.6.0.js"></script>
+  <script src="js/html2canvas.js"></script>
+  <script src="js/reimg.js"></script>
+  <script src="js/html2canvas.min.js"></script>
   <script type="text/javascript">
 
     window.onload = function() {
       
       FBInstant.initializeAsync().then(function() {
-        
-        var playerID = FBInstant.player.getID();
-        var playerImage = new Image();
-          playerImage.crossOrigin = 'anonymous';
-          // This function should be called after FBInstant.startGameAsync()
-          // resolves.
-          playerImage.src = FBInstant.player.getPhoto();
-          playerImage.height = 150;
-          playerImage.width = 150;
-          playerImage.border = 10
-          playerImage.style.borderColor= 'white';
-          document.getElementById('image').innerHTML = playerImage.outerHTML;
         })
 
         // // Finished loading. Start the game
         FBInstant.startGameAsync().then(function() {
           startGame();          
         });
-    };
+        };
 
     // function selectContext() {
     //   // FBInstant.context.chooseAsync()
@@ -50,7 +41,7 @@
     //     });
     // }
 
-    function startGame() {
+function startGame() {
       document.getElementById('prediction').innerHTML = '<div class="loader"></div> ';
       setTimeout(function(){ 
         var predictionImage = new Image();
@@ -58,32 +49,71 @@
           // This function should be called after FBInstant.startGameAsync()
           // resolves.
           predictionImage.src = './img/prediction1.jpg'
-          predictionImage.height = 150;
-          predictionImage.width = 150;
-          predictionImage.border = 10
+          // predictionImage.height = 150;
+          // predictionImage.width = 150;
+          predictionImage.border = 5
           predictionImage.style.borderColor= 'white';
           document.getElementById('prediction').innerHTML = predictionImage.outerHTML;
+
+
+          var playerID = FBInstant.player.getID();
+        var playerImage = new Image();
+          playerImage.crossOrigin = 'anonymous';
+          // This function should be called after FBInstant.startGameAsync()
+          // resolves.
+          playerImage.src = FBInstant.player.getPhoto();
+          // playerImage.height = 150;
+          // playerImage.width = 150;
+          playerImage.border = 5
+          playerImage.style.borderColor= 'white';
+          document.getElementById('image').innerHTML = playerImage.outerHTML;
        }, 3000);
-     
+      var element = document.getElementById("mymodal");
+      element.classList.add("is-active");
+
+   
+
+html2canvas(document.querySelector("#pasi")).then(canvas => {
+    // document.body.appendChild(canvas)
+    var png = ReImg.fromCanvas(canvas).toPng();
+    document.getElementById('result').innerHTML = png.outerHTML;
+});
+
+
     }
-  
+function closeModal(){
+      var element = document.getElementById("mymodal");
+      element.classList.remove("is-active");
+    }
 </script>
 
-<div class="center">
- <label class="button is-link is-large" for="element-toggle">Launch Modal</label>
-<input id="element-toggle" type="checkbox" />
 
-<!-- Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-    <div id="image" style="margin:2%">
+<div class="center">
+  <div>
+      <button class="button is-link is-large" onclick="startGame();">Predict My Future</button>
   </div>
-  <div id="prediction" style="margin:2%">
+  <div class="modal" id="mymodal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div id="pasi" class="center">
+         
+                <div class="GridMain card">
+                  <div style="margin:4%"><h1 class="header">what surprise awaits you in 2019?</h1></div>
+                    <div class="imageGrid">
+                          <div id="image" style="margin:2%">
+                          </div>
+                          <div id="prediction" style="margin:2%">
+                          </div>
+                    </div>
+                    <button class="button is-link is-medium share"><i class="fab fa-facebook-square fb"></i>Share</button>
+                </div>
+          
+        </div>
+      <!-- <p class="image is-4by3" id="result">
+      </p> -->
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="closeModal();"></button>
   </div>
-  </div>
-  <label class="modal-close is-large" for="element-toggle"></label>
-</div>
 </div>
 </body>
 </html>
